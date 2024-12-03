@@ -19,4 +19,18 @@ def safe?(line)
   true
 end
 
-pp input.count { |line| safe?(line) }
+# part 1
+def part1
+  pp input.count { |line| safe?(line) }
+end
+
+# part 2
+count = 0
+input.each do |line|
+  lines = [line]
+  0.upto(line.length-1) do |i|
+    lines << line[0...i] + line[i+1..-1]
+  end
+  count += 1 if lines.any? { safe?(_1) }
+end
+pp count
